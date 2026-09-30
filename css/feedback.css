@@ -1,0 +1,110 @@
+/* Componentes de feedback: badges, alertas, toast e modal.
+   Usam só as variáveis do design system. */
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-block;
+  padding: var(--espaco-1) var(--espaco-2);
+  border-radius: 999px;
+  background: var(--neutro-200);
+  color: var(--neutro-900);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.badge--sucesso { background: var(--cor-sucesso); color: var(--branco); }
+.badge--erro    { background: var(--cor-erro); color: var(--branco); }
+.badge--aviso   { background: var(--cor-destaque); color: var(--neutro-900); }
+.badge--info    { background: var(--cor-primaria); color: var(--branco); }
+
+/* ---------- Alertas ---------- */
+.alerta {
+  margin-block: var(--espaco-3);
+  padding: var(--espaco-3) var(--espaco-4);
+  border-left: 6px solid var(--neutro-600);
+  border-radius: var(--raio);
+  background: var(--neutro-50);
+  color: var(--neutro-900);
+}
+.alerta__titulo { display: block; font-weight: 700; }
+.alerta__titulo::before {
+  margin-right: var(--espaco-2);
+  font-weight: 700;
+}
+.alerta--sucesso { border-color: var(--cor-sucesso); background: rgba(22, 101, 52, 0.08); }
+.alerta--sucesso .alerta__titulo::before { content: "\2714"; color: var(--cor-sucesso); }
+.alerta--erro { border-color: var(--cor-erro); background: rgba(180, 35, 24, 0.08); }
+.alerta--erro .alerta__titulo::before { content: "\2716"; color: var(--cor-erro); }
+.alerta--aviso { border-color: var(--cor-destaque); background: rgba(245, 158, 11, 0.14); }
+.alerta--aviso .alerta__titulo::before { content: "!"; color: var(--cor-secundaria); }
+.alerta--info { border-color: var(--cor-primaria); background: rgba(11, 93, 94, 0.08); }
+.alerta--info .alerta__titulo::before { content: "i"; color: var(--cor-primaria); }
+
+/* ---------- Toast (aviso rápido que não trava a tela) ---------- */
+.toast {
+  position: fixed;
+  right: var(--espaco-4);
+  bottom: var(--espaco-4);
+  z-index: 50;
+  max-width: 320px;
+  padding: var(--espaco-3) var(--espaco-4);
+  border-left: 6px solid var(--cor-sucesso);
+  border-radius: var(--raio);
+  background: var(--neutro-900);
+  color: var(--branco);
+  box-shadow: var(--sombra-forte);
+}
+.toast--erro { border-left-color: var(--cor-erro); }
+
+/* Versão que entra, fica 4s e some sozinha */
+.toast--auto { animation: toast-entra 0.3s ease, toast-sai 0.3s ease 4s forwards; }
+@keyframes toast-entra { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes toast-sai   { to { opacity: 0; visibility: hidden; } }
+
+/* ---------- Modal (abre pelo :target, sem JavaScript) ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espaco-3);
+  background: rgba(31, 41, 51, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.modal:target { opacity: 1; visibility: visible; }
+
+.modal__caixa {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  padding: var(--espaco-5);
+  border-radius: var(--raio);
+  background: var(--branco);
+  box-shadow: var(--sombra-forte);
+}
+.modal__caixa h2 { margin-top: 0; }
+.modal__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--espaco-3);
+  margin-top: var(--espaco-4);
+}
+.modal__fechar {
+  position: absolute;
+  top: var(--espaco-2);
+  right: var(--espaco-3);
+  font-size: var(--fs-xl);
+  line-height: 1;
+  color: var(--neutro-600);
+  text-decoration: none;
+}
+.modal__fechar:hover { color: var(--neutro-900); }
+
+@media (prefers-reduced-motion: reduce) {
+  .modal, .toast--auto { transition: none; animation: none; }
+}
