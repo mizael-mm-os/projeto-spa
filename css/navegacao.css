@@ -118,6 +118,13 @@
     visibility: visible;
     transform: translateY(0);
   }
+
+  /* Esc fecha o dropdown mesmo com o mouse ou o foco ainda dentro do item */
+  .menu__item--sub.menu__item--fechado .submenu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+  }
 }
 
 /* Respeita quem pediu menos animação no sistema */

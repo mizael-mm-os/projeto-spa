@@ -59,6 +59,27 @@
     app.scrollIntoView();
   }
 
+  /* Esc fecha o menu do celular e o dropdown do desktop (WCAG 1.4.13) */
+  function aoTeclar(evento) {
+    if (evento.key !== 'Escape') return;
+    const toggle = document.getElementById('menu-toggle');
+    if (toggle.checked) {
+      toggle.checked = false;
+      toggle.focus();
+    }
+    const item = document.querySelector('.menu__item--sub');
+    if (item.matches(':hover, :focus-within')) {
+      item.classList.add('menu__item--fechado');
+      if (item.contains(document.activeElement)) item.firstElementChild.focus();
+    }
+  }
+
+  function reabrirDropdown(evento) {
+    const item = evento.currentTarget;
+    if (evento.type === 'focusout' && item.contains(evento.relatedTarget)) return;
+    item.classList.remove('menu__item--fechado');
+  }
+
   function aoClicar(evento) {
     const botao = evento.target.closest('[data-acao="limpar"]');
     if (!botao) return;
@@ -74,6 +95,10 @@
     app.addEventListener('input', aoDigitar);
     app.addEventListener('focusout', validarUm);
     app.addEventListener('click', aoClicar);
+    document.addEventListener('keydown', aoTeclar);
+    const item = document.querySelector('.menu__item--sub');
+    item.addEventListener('mouseleave', reabrirDropdown);
+    item.addEventListener('focusout', reabrirDropdown);
     document.querySelector('.pular-conteudo').addEventListener('click', pularParaConteudo);
     App.router.iniciar();
   });
