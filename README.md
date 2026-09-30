@@ -22,7 +22,9 @@ projeto-spa/
 ├── html/
 │   └── index.html          página única da aplicação
 ├── css/                    variaveis, layout, componentes, navegacao, estados, feedback e styles
-├── imagens/                banner em webp, jpg e png
+├── imagens/                banner em webp, jpg e png, e favicon
+├── scripts/build.js        build de produção (esbuild)
+├── .github/workflows/      deploy no GitHub Pages
 ├── js/
 │   ├── main.js             ponto de entrada e eventos
 │   └── modules/            dados, storage, validacao, ui, templates e router
@@ -38,6 +40,19 @@ git clone URL-DO-REPOSITORIO
 cd projeto-spa
 # abra html/index.html no navegador
 ```
+
+## Build e deploy
+
+O site publicado usa uma versão de produção, gerada por `scripts/build.js` com esbuild. O script junta os 7 arquivos CSS e os 7 de JS em `app.min.css` e `app.min.js` (34,5 KB no total viram 22,3 KB), reescreve o caminho das imagens e grava tudo em `dist/`.
+
+```bash
+npm install
+npm run build     # gera dist/
+```
+
+A pasta `dist/` não é versionada. O workflow `.github/workflows/deploy.yml` roda o build a cada push na `main` e publica a `dist/` no GitHub Pages. Foi escolhido o Actions, e não o Pages direto da `main`, porque o site abre em `html/index.html` (a URL ficaria `/html/index.html`, sem minificação) e assim a estrutura de pastas obrigatória não muda.
+
+Site publicado: https://mizael-mm-os.github.io/projeto-spa/
 
 ## Como usar
 
@@ -90,7 +105,7 @@ Os módulos são scripts comuns que se registram no objeto global `App` e são c
 
 O projeto segue o GitFlow:
 
-- `main`: versões estáveis, marcadas com tags (v1.0.0, v1.1.0)
+- `main`: versões estáveis, marcadas com tags (v1.0.0, v1.1.0, v1.2.0). Um push na `main` dispara o deploy
 - `develop`: integração do desenvolvimento
 - `feature/*`: cada funcionalidade nova
 - `release/*`: preparação de uma versão
@@ -106,6 +121,8 @@ Os commits seguem o padrão semântico (`feat`, `fix`, `docs`, `test`, `chore`).
 - Sem teste com leitor de tela e sem revisão manual completa de acessibilidade
 - A validação é só no navegador; uma aplicação real também precisa validar no servidor
 - Os projetos da ONG são dados de exemplo (fictícios)
+- O banner tem o texto "Cadastro" desenhado na imagem, que não combina com a tela inicial. A imagem não foi trocada
+- As três versões do banner não foram recomprimidas: já são pequenas (webp 11 KB, jpg 16 KB, png 18 KB) e não se mediu ganho
 
 ## Autor
 
