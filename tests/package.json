@@ -1,0 +1,19 @@
+{
+  "name": "projeto-spa-tests",
+  "version": "1.0.0",
+  "description": "Auditoria automatizada (Playwright e axe-core)",
+  "scripts": {
+    "servir": "node servidor.js 8123",
+    "auditoria": "node auditoria.js",
+    "lighthouse": "node lighthouse.js http://localhost:8123/html/index.html",
+    "test": "node auditoria.js"
+  },
+  "type": "commonjs",
+  "private": "true",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "chrome-launcher": "^1.2.2",
+    "lighthouse": "^13.5.0",
+    "playwright": "^1.63.0"
+  }
+}
