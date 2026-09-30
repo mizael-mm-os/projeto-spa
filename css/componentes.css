@@ -52,6 +52,7 @@
   padding: var(--espaco-4);
 }
 .card__corpo { flex: 1; }
+.card__corpo h2 { margin-top: 0; font-size: var(--fs-lg); color: var(--cor-primaria); }
 .card__rodape {
   display: flex;
   justify-content: space-between;
