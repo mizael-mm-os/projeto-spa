@@ -51,6 +51,14 @@
     if (bloco && bloco.classList.contains('campo--erro')) validarUm(evento);
   }
 
+  /* Move o foco para o conteúdo sem mexer no hash, que é usado pelas rotas */
+  function pularParaConteudo(evento) {
+    evento.preventDefault();
+    const app = document.getElementById('app');
+    app.focus();
+    app.scrollIntoView();
+  }
+
   function aoClicar(evento) {
     const botao = evento.target.closest('[data-acao="limpar"]');
     if (!botao) return;
@@ -66,6 +74,7 @@
     app.addEventListener('input', aoDigitar);
     app.addEventListener('focusout', validarUm);
     app.addEventListener('click', aoClicar);
+    document.querySelector('.pular-conteudo').addEventListener('click', pularParaConteudo);
     App.router.iniciar();
   });
 })(window.App = window.App || {});
