@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma da ONG</title>
+  <link rel="stylesheet" href="../css/variaveis.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/componentes.css">
+  <link rel="stylesheet" href="../css/navegacao.css">
+  <link rel="stylesheet" href="../css/estados.css">
+  <link rel="stylesheet" href="../css/feedback.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="cabecalho">
+      <a class="cabecalho__logo" href="#/inicio">Nome da ONG</a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-hamburguer" aria-label="Abrir ou fechar o menu"><span></span></label>
+
+      <nav class="nav" aria-label="Principal">
+        <ul class="menu">
+          <li><a href="#/inicio" data-rota="/inicio">Início</a></li>
+          <li><a href="#/projetos" data-rota="/projetos">Projetos</a></li>
+          <li class="menu__item--sub">
+            <a href="#/cadastro" data-rota="/cadastro">Participe</a>
+            <ul class="submenu">
+              <li><a href="#/cadastro" data-rota="/cadastro">Seja voluntário</a></li>
+              <li><a href="#/voluntarios" data-rota="/voluntarios">Cadastros salvos</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Aqui o JavaScript desenha cada "página" -->
+    <main id="app" tabindex="-1"></main>
+
+    <footer class="rodape">
+      <span>Nome da ONG</span>
+      <span>contato@exemplo.org</span>
+    </footer>
+  </div>
+
+  <!-- Avisos rápidos (toast) -->
+  <div id="toast-area" aria-live="polite"></div>
+
+  <!-- Scripts por área de funcionalidade, nesta ordem -->
+  <script src="../js/modules/dados.js"></script>
+  <script src="../js/modules/storage.js"></script>
+  <script src="../js/modules/validacao.js"></script>
+  <script src="../js/modules/ui.js"></script>
+  <script src="../js/modules/templates.js"></script>
+  <script src="../js/modules/router.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
