@@ -74,6 +74,8 @@
 
 /* Desktop: menu horizontal e submenu tipo dropdown */
 @media (min-width: 768px) {
+  /* Sem hambúrguer, o checkbox também sai da tela e da ordem de foco */
+  .menu-toggle,
   .menu-hamburguer { display: none; }
 
   .nav {
