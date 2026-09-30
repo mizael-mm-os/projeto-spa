@@ -1,6 +1,8 @@
 /* Layout com CSS Grid de 12 colunas. Mobile first: a base vale para celular
    e cada media query com min-width acrescenta regras para telas maiores. */
 
+*, *::before, *::after { box-sizing: border-box; }
+
 .container {
   width: 100%;
   max-width: 1200px;

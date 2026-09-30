@@ -25,25 +25,25 @@
   background: var(--branco);
   cursor: pointer;
 }
-.menu-hamburguer span,
-.menu-hamburguer span::before,
-.menu-hamburguer span::after {
+.menu-hamburguer__barras,
+.menu-hamburguer__barras::before,
+.menu-hamburguer__barras::after {
   display: block;
   width: 22px;
   height: 2px;
   background: var(--neutro-900);
   transition: transform 0.3s, background 0.3s;
 }
-.menu-hamburguer span { position: relative; }
-.menu-hamburguer span::before,
-.menu-hamburguer span::after { content: ""; position: absolute; left: 0; }
-.menu-hamburguer span::before { top: -7px; }
-.menu-hamburguer span::after  { top: 7px; }
+.menu-hamburguer__barras { position: relative; }
+.menu-hamburguer__barras::before,
+.menu-hamburguer__barras::after { content: ""; position: absolute; left: 0; }
+.menu-hamburguer__barras::before { top: -7px; }
+.menu-hamburguer__barras::after  { top: 7px; }
 
 /* Menu aberto: as três linhas viram um X */
-.menu-toggle:checked ~ .menu-hamburguer span { background: transparent; }
-.menu-toggle:checked ~ .menu-hamburguer span::before { top: 0; transform: rotate(45deg); }
-.menu-toggle:checked ~ .menu-hamburguer span::after  { top: 0; transform: rotate(-45deg); }
+.menu-toggle:checked ~ .menu-hamburguer .menu-hamburguer__barras { background: transparent; }
+.menu-toggle:checked ~ .menu-hamburguer__barras::before { top: 0; transform: rotate(45deg); }
+.menu-toggle:checked ~ .menu-hamburguer__barras::after  { top: 0; transform: rotate(-45deg); }
 
 /* Celular: o menu ocupa a linha de baixo e abre deslizando */
 .nav {
@@ -74,6 +74,8 @@
 
 /* Desktop: menu horizontal e submenu tipo dropdown */
 @media (min-width: 768px) {
+  /* Sem hambúrguer, o checkbox também sai da tela e da ordem de foco */
+  .menu-toggle,
   .menu-hamburguer { display: none; }
 
   .nav {
@@ -93,7 +95,7 @@
   .submenu {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 0; /* alinha à direita: o item fica no fim do menu e o submenu não pode passar da tela */
     min-width: 200px;
     margin: 0;
     padding: var(--espaco-2);
@@ -116,10 +118,17 @@
     visibility: visible;
     transform: translateY(0);
   }
+
+  /* Esc fecha o dropdown mesmo com o mouse ou o foco ainda dentro do item */
+  .menu__item--sub.menu__item--fechado .submenu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+  }
 }
 
 /* Respeita quem pediu menos animação no sistema */
 @media (prefers-reduced-motion: reduce) {
-  .nav, .submenu, .menu-hamburguer span,
-  .menu-hamburguer span::before, .menu-hamburguer span::after { transition: none; }
+  .nav, .submenu, .menu-hamburguer__barras,
+  .menu-hamburguer__barras::before, .menu-hamburguer__barras::after { transition: none; }
 }

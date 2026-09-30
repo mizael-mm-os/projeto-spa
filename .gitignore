@@ -9,3 +9,4 @@ Thumbs.db
 # Logs e dependências (caso o projeto passe a usar npm)
 *.log
 node_modules/
+tests/resultado-auditoria.json

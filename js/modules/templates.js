@@ -15,12 +15,12 @@
     return `
       <article class="card col-sm-6 col-lg-4">
         <div class="card__corpo">
-          <h3>${esc(projeto.titulo)}</h3>
+          <h2>${esc(projeto.titulo)}</h2>
           <p>${esc(projeto.descricao)}</p>
         </div>
         <div class="card__rodape">
           <span class="badge ${s.classe}">${esc(s.texto)}</span>
-          <a class="btn" href="#/cadastro">Participar</a>
+          <a class="btn" href="#/cadastro" aria-label="Participar do projeto ${esc(projeto.titulo)}">Participar</a>
         </div>
       </article>`;
   }
