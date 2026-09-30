@@ -25,25 +25,25 @@
   background: var(--branco);
   cursor: pointer;
 }
-.menu-hamburguer span,
-.menu-hamburguer span::before,
-.menu-hamburguer span::after {
+.menu-hamburguer__barras,
+.menu-hamburguer__barras::before,
+.menu-hamburguer__barras::after {
   display: block;
   width: 22px;
   height: 2px;
   background: var(--neutro-900);
   transition: transform 0.3s, background 0.3s;
 }
-.menu-hamburguer span { position: relative; }
-.menu-hamburguer span::before,
-.menu-hamburguer span::after { content: ""; position: absolute; left: 0; }
-.menu-hamburguer span::before { top: -7px; }
-.menu-hamburguer span::after  { top: 7px; }
+.menu-hamburguer__barras { position: relative; }
+.menu-hamburguer__barras::before,
+.menu-hamburguer__barras::after { content: ""; position: absolute; left: 0; }
+.menu-hamburguer__barras::before { top: -7px; }
+.menu-hamburguer__barras::after  { top: 7px; }
 
 /* Menu aberto: as três linhas viram um X */
-.menu-toggle:checked ~ .menu-hamburguer span { background: transparent; }
-.menu-toggle:checked ~ .menu-hamburguer span::before { top: 0; transform: rotate(45deg); }
-.menu-toggle:checked ~ .menu-hamburguer span::after  { top: 0; transform: rotate(-45deg); }
+.menu-toggle:checked ~ .menu-hamburguer .menu-hamburguer__barras { background: transparent; }
+.menu-toggle:checked ~ .menu-hamburguer__barras::before { top: 0; transform: rotate(45deg); }
+.menu-toggle:checked ~ .menu-hamburguer__barras::after  { top: 0; transform: rotate(-45deg); }
 
 /* Celular: o menu ocupa a linha de baixo e abre deslizando */
 .nav {
@@ -120,6 +120,6 @@
 
 /* Respeita quem pediu menos animação no sistema */
 @media (prefers-reduced-motion: reduce) {
-  .nav, .submenu, .menu-hamburguer span,
-  .menu-hamburguer span::before, .menu-hamburguer span::after { transition: none; }
+  .nav, .submenu, .menu-hamburguer__barras,
+  .menu-hamburguer__barras::before, .menu-hamburguer__barras::after { transition: none; }
 }

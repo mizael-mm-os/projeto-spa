@@ -3,6 +3,17 @@
 body { margin: 0; }
 main:focus { outline: none; }
 
+/* Texto só para leitor de tela */
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* Link para pular o menu: fora da tela até receber foco */
 .pular-conteudo {
   position: absolute;
