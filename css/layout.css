@@ -1,0 +1,52 @@
+/* Layout com CSS Grid de 12 colunas. Mobile first: a base vale para celular
+   e cada media query com min-width acrescenta regras para telas maiores. */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--espaco-3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-3);
+}
+
+/* Celular: todo item ocupa as 12 colunas (empilhado) */
+.grid > * { grid-column: span 12; }
+
+/* 1) 480px: celulares grandes, 2 colunas */
+@media (min-width: 480px) {
+  .grid { gap: var(--espaco-4); }
+  .col-sm-6 { grid-column: span 6; }
+}
+
+/* 2) 768px: tablets, 2 e 3 colunas */
+@media (min-width: 768px) {
+  .container { padding-inline: var(--espaco-4); }
+  .col-md-4 { grid-column: span 4; }
+  .col-md-6 { grid-column: span 6; }
+  .col-md-8 { grid-column: span 8; }
+}
+
+/* 3) 1024px: desktop, menu lateral e conteúdo principal */
+@media (min-width: 1024px) {
+  .grid { gap: var(--espaco-5); }
+  .col-lg-3 { grid-column: span 3; }
+  .col-lg-4 { grid-column: span 4; }
+  .col-lg-9 { grid-column: span 9; }
+}
+
+/* 4) 1280px: desktop grande, cards em 4 colunas */
+@media (min-width: 1280px) {
+  .container { padding-inline: var(--espaco-5); }
+  .col-xl-3 { grid-column: span 3; }
+}
+
+/* 5) 1600px: telas panorâmicas, container mais largo e mais respiro */
+@media (min-width: 1600px) {
+  .container { max-width: 1440px; padding-inline: var(--espaco-6); }
+  .grid { gap: var(--espaco-6); }
+}

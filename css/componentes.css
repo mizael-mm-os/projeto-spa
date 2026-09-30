@@ -1,0 +1,84 @@
+/* Componentes internos com Flexbox */
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-2);
+  padding: var(--espaco-2) var(--espaco-4);
+  border: 0;
+  border-radius: var(--raio);
+  background: var(--cor-primaria);
+  color: var(--branco);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn--doar { background: var(--cor-destaque); color: var(--neutro-900); }
+
+/* Cabeçalho: logo à esquerda, menu à direita, quebra se faltar espaço */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--espaco-3);
+  padding-block: var(--espaco-3);
+}
+.cabecalho__logo { font-size: var(--fs-lg); font-weight: 700; color: var(--cor-primaria-escura); text-decoration: none; }
+
+/* Menu de navegação */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espaco-2) var(--espaco-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu a:not(.btn) { color: var(--cor-primaria); font-weight: 600; }
+
+/* Card: coluna com o rodapé sempre colado embaixo */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--branco);
+  border: 1px solid var(--neutro-200);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: var(--espaco-4);
+}
+.card__corpo { flex: 1; }
+.card__rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+  margin-top: var(--espaco-3);
+}
+
+/* Barra de ações: botões lado a lado, quebrando linha quando precisa */
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espaco-3);
+  padding-block: var(--espaco-5);
+}
+
+/* Rodapé do site */
+.rodape {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espaco-3);
+  padding-block: var(--espaco-4);
+  border-top: 1px solid var(--neutro-200);
+  color: var(--neutro-600);
+  font-size: var(--fs-sm);
+}

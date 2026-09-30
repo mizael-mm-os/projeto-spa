@@ -1,0 +1,112 @@
+/* Estados interativos: botões, cards e formulários */
+
+:root { --sombra-forte: 0 8px 20px rgba(31, 41, 51, 0.18); }
+
+/* ---------- Botões ---------- */
+.btn {
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s;
+}
+.btn:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--cor-primaria-escura);
+  box-shadow: var(--sombra);
+  transform: translateY(-2px);
+}
+.btn:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.btn:focus-visible { outline: var(--foco); outline-offset: 3px; }
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Botão de doação: no hover troca o âmbar pelo laranja escuro e o texto fica branco */
+.btn--doar:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--cor-secundaria);
+  color: var(--branco);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.card:hover,
+.card:focus-within {
+  border-color: var(--cor-primaria);
+  box-shadow: var(--sombra-forte);
+  transform: translateY(-4px);
+}
+
+/* ---------- Formulários ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  margin-bottom: var(--espaco-4);
+}
+.campo label { font-weight: 600; }
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: var(--espaco-2) var(--espaco-3);
+  border: 2px solid var(--neutro-600);
+  border-radius: var(--raio);
+  background: var(--branco);
+  color: var(--neutro-900);
+  font: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.campo input:hover,
+.campo select:hover,
+.campo textarea:hover { border-color: var(--cor-primaria); }
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(11, 93, 94, 0.25);
+}
+
+.campo input:disabled,
+.campo select:disabled,
+.campo textarea:disabled {
+  background: var(--neutro-200);
+  color: var(--neutro-600);
+  cursor: not-allowed;
+}
+
+/* Validação visual: só depois que a pessoa mexeu no campo */
+.campo input:user-valid,
+.campo select:user-valid,
+.campo textarea:user-valid { border-color: var(--cor-sucesso); }
+
+.campo input:user-invalid,
+.campo select:user-invalid,
+.campo textarea:user-invalid {
+  border-color: var(--cor-erro);
+  background: rgba(180, 35, 24, 0.06);
+}
+
+/* Mensagens ficam escondidas e aparecem junto do estado (além da cor, há texto) */
+.campo__erro,
+.campo__ok { display: none; font-size: var(--fs-sm); font-weight: 600; }
+.campo__erro { color: var(--cor-erro); }
+.campo__ok { color: var(--cor-sucesso); }
+
+.campo input:user-invalid ~ .campo__erro,
+.campo select:user-invalid ~ .campo__erro,
+.campo textarea:user-invalid ~ .campo__erro { display: block; }
+
+.campo input:user-valid ~ .campo__ok,
+.campo select:user-valid ~ .campo__ok,
+.campo textarea:user-valid ~ .campo__ok { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .card, .campo input, .campo select, .campo textarea { transition: none; }
+  .btn:hover:not(:disabled), .card:hover, .card:focus-within { transform: none; }
+}
