@@ -93,7 +93,7 @@
   .submenu {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 0; /* alinha à direita: o item fica no fim do menu e o submenu não pode passar da tela */
     min-width: 200px;
     margin: 0;
     padding: var(--espaco-2);
