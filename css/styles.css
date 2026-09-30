@@ -3,6 +3,25 @@
 body { margin: 0; }
 main:focus { outline: none; }
 
+/* Link para pular o menu: fora da tela até receber foco */
+.pular-conteudo {
+  position: absolute;
+  left: var(--espaco-3);
+  top: 0;
+  transform: translateY(-120%);
+  padding: var(--espaco-2) var(--espaco-3);
+  background: var(--neutro-900);
+  color: var(--branco);
+  font-weight: 700;
+  border-radius: 0 0 var(--raio) var(--raio);
+  z-index: 1000;
+}
+.pular-conteudo:focus {
+  transform: translateY(0);
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
 /* Link da página atual no menu */
 .menu a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
 
