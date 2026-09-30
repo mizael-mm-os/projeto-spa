@@ -1,0 +1,125 @@
+/* Menu responsivo: dropdown no desktop e hambúrguer no celular.
+   Feito só com CSS (sem JavaScript). Mobile first. */
+
+.cabecalho { position: relative; }
+
+/* Checkbox que guarda o estado aberto/fechado do menu.
+   Fica invisível, mas continua acessível pelo teclado (não usar display: none). */
+.menu-toggle {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.menu-toggle:focus-visible ~ .menu-hamburguer { outline: var(--foco); outline-offset: 2px; }
+
+/* Botão hambúrguer (é o label do checkbox) */
+.menu-hamburguer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--neutro-200);
+  border-radius: var(--raio);
+  background: var(--branco);
+  cursor: pointer;
+}
+.menu-hamburguer span,
+.menu-hamburguer span::before,
+.menu-hamburguer span::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--neutro-900);
+  transition: transform 0.3s, background 0.3s;
+}
+.menu-hamburguer span { position: relative; }
+.menu-hamburguer span::before,
+.menu-hamburguer span::after { content: ""; position: absolute; left: 0; }
+.menu-hamburguer span::before { top: -7px; }
+.menu-hamburguer span::after  { top: 7px; }
+
+/* Menu aberto: as três linhas viram um X */
+.menu-toggle:checked ~ .menu-hamburguer span { background: transparent; }
+.menu-toggle:checked ~ .menu-hamburguer span::before { top: 0; transform: rotate(45deg); }
+.menu-toggle:checked ~ .menu-hamburguer span::after  { top: 0; transform: rotate(-45deg); }
+
+/* Celular: o menu ocupa a linha de baixo e abre deslizando */
+.nav {
+  flex-basis: 100%;
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: max-height 0.3s ease, visibility 0.3s;
+}
+.menu-toggle:checked ~ .nav {
+  max-height: 600px;
+  visibility: visible;
+}
+.nav .menu {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-block: var(--espaco-3);
+}
+
+/* Submenu no celular: sempre aberto, recuado, dentro da lista */
+.submenu {
+  list-style: none;
+  margin: var(--espaco-2) 0 0;
+  padding: 0 0 0 var(--espaco-3);
+}
+.submenu li + li { margin-top: var(--espaco-2); }
+.submenu a { color: var(--cor-primaria); }
+
+/* Desktop: menu horizontal e submenu tipo dropdown */
+@media (min-width: 768px) {
+  .menu-hamburguer { display: none; }
+
+  .nav {
+    flex-basis: auto;
+    max-height: none;
+    overflow: visible;
+    visibility: visible;
+  }
+  .nav .menu {
+    flex-direction: row;
+    align-items: center;
+    padding-block: 0;
+  }
+
+  .menu__item--sub { position: relative; }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    margin: 0;
+    padding: var(--espaco-2);
+    background: var(--branco);
+    border: 1px solid var(--neutro-200);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+  .submenu a { display: block; padding: var(--espaco-2) var(--espaco-3); }
+  .submenu a:hover { background: var(--neutro-50); }
+
+  /* Abre com o mouse ou quando o foco do teclado está dentro do item */
+  .menu__item--sub:hover .submenu,
+  .menu__item--sub:focus-within .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* Respeita quem pediu menos animação no sistema */
+@media (prefers-reduced-motion: reduce) {
+  .nav, .submenu, .menu-hamburguer span,
+  .menu-hamburguer span::before, .menu-hamburguer span::after { transition: none; }
+}

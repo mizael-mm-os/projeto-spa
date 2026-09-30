@@ -1,0 +1,35 @@
+/* Ajustes da aplicação SPA (validação por JavaScript, navegação ativa, listas) */
+
+body { margin: 0; }
+main:focus { outline: none; }
+
+/* Link da página atual no menu */
+.menu a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+
+/* Estados vindos da validação em JavaScript (classes ligadas pelo main.js).
+   Vêm depois de estados.css e têm a mesma força, então valem mais que o :user-valid. */
+.campo.campo--erro input,
+.campo.campo--erro select {
+  border-color: var(--cor-erro);
+  background: rgba(180, 35, 24, 0.06);
+}
+.campo.campo--erro .campo__erro { display: block; }
+.campo.campo--ok input,
+.campo.campo--ok select { border-color: var(--cor-sucesso); }
+
+.hero { margin-block: var(--espaco-4); }
+.hero img { max-width: 100%; height: auto; border-radius: var(--raio); }
+
+.lista-cadastros {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espaco-3);
+}
+.lista-cadastros li {
+  padding: var(--espaco-3) var(--espaco-4);
+  background: var(--branco);
+  border: 1px solid var(--neutro-200);
+  border-radius: var(--raio);
+}
