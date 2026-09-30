@@ -15,7 +15,7 @@
     return `
       <article class="card col-sm-6 col-lg-4">
         <div class="card__corpo">
-          <h3>${esc(projeto.titulo)}</h3>
+          <h2>${esc(projeto.titulo)}</h2>
           <p>${esc(projeto.descricao)}</p>
         </div>
         <div class="card__rodape">
