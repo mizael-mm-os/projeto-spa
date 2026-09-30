@@ -1,0 +1,58 @@
+/* Design System da plataforma para ONGs */
+:root {
+  /* Cores primárias */
+  --cor-primaria: #0B5D5E;
+  --cor-primaria-escura: #084243;
+
+  /* Cores secundárias e de apoio */
+  --cor-secundaria: #B54708;
+  --cor-destaque: #F59E0B;
+  --cor-sucesso: #166534;
+  --cor-erro: #B42318;
+
+  /* Tons neutros */
+  --neutro-900: #1F2933;
+  --neutro-600: #52606D;
+  --neutro-200: #E4E7EB;
+  --neutro-50: #F7F9FA;
+  --branco: #FFFFFF;
+
+  /* Tipografia: fontes do sistema, sem download */
+  --fonte-base: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --fs-sm: 0.875rem;   /* 14px: legendas e textos de apoio */
+  --fs-base: 1rem;     /* 16px: texto corrido */
+  --fs-lg: 1.25rem;    /* 20px: subtítulos */
+  --fs-xl: 1.75rem;    /* 28px: títulos de seção */
+  --fs-2xl: 2.5rem;    /* 40px: título principal */
+  --lh-texto: 1.6;
+  --lh-titulo: 1.2;
+
+  /* Espaçamentos: escala modular com base de 4px */
+  --espaco-1: 0.25rem; /* 4px  */
+  --espaco-2: 0.5rem;  /* 8px  */
+  --espaco-3: 1rem;    /* 16px */
+  --espaco-4: 1.5rem;  /* 24px */
+  --espaco-5: 2rem;    /* 32px */
+  --espaco-6: 3rem;    /* 48px */
+  --espaco-7: 4rem;    /* 64px */
+
+  /* Outros */
+  --raio: 8px;
+  --sombra: 0 2px 8px rgba(31, 41, 51, 0.12);
+  --foco: 3px solid var(--cor-destaque);
+}
+
+body {
+  font-family: var(--fonte-base);
+  font-size: var(--fs-base);
+  line-height: var(--lh-texto);
+  color: var(--neutro-900);
+  background: var(--neutro-50);
+}
+
+h1 { font-size: var(--fs-2xl); line-height: var(--lh-titulo); color: var(--cor-primaria-escura); }
+h2 { font-size: var(--fs-xl);  line-height: var(--lh-titulo); color: var(--cor-primaria); }
+h3 { font-size: var(--fs-lg);  color: var(--cor-primaria); }
+small { font-size: var(--fs-sm); color: var(--neutro-600); }
+
+:focus-visible { outline: var(--foco); outline-offset: 2px; }
