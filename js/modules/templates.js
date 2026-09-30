@@ -20,7 +20,7 @@
         </div>
         <div class="card__rodape">
           <span class="badge ${s.classe}">${esc(s.texto)}</span>
-          <a class="btn" href="#/cadastro">Participar</a>
+          <a class="btn" href="#/cadastro" aria-label="Participar do projeto ${esc(projeto.titulo)}">Participar</a>
         </div>
       </article>`;
   }
