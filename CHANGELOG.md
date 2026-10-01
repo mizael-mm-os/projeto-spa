@@ -3,6 +3,13 @@
 Todas as mudanças relevantes deste projeto ficam neste arquivo.
 O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.2.1] - 2026-09-30
+
+Correção de documentação.
+
+### Corrigido
+- Tamanho de CSS e JS antes do build no README e no CHANGELOG: eram 35.064 bytes (35,1 KB) e estava escrito 34,5 KB
+
 ## [1.2.0] - 2026-09-30
 
 Versão de build de produção e publicação.
@@ -13,7 +20,7 @@ Versão de build de produção e publicação.
 - Favicon, que evita o 404 em `/favicon.ico` (#17, #20)
 
 ### Medições
-- CSS e JS: de 14 arquivos e 34,5 KB para 2 arquivos e 22,3 KB (12.235 bytes de CSS e 10.070 de JS)
+- CSS e JS: de 14 arquivos e 35,1 KB para 2 arquivos e 22,3 KB (12.235 bytes de CSS e 10.070 de JS)
 - Lighthouse por HTTP local na `dist/`: acessibilidade 100, desempenho 100 e melhores práticas 100 nas 4 telas (antes do favicon, a tela inicial tinha 96 em melhores práticas)
 - Imagens não alteradas: webp 11 KB, jpg 16 KB e png 18 KB
 
@@ -49,6 +56,7 @@ Primeira versão publicada.
 - Design system em variáveis CSS, grid de 12 colunas e 5 breakpoints
 - Componentes de feedback: badges, alertas, toast e modal
 
+[1.2.1]: https://github.com/mizael-mm-os/projeto-spa/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/mizael-mm-os/projeto-spa/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/mizael-mm-os/projeto-spa/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/mizael-mm-os/projeto-spa/releases/tag/v1.0.0
