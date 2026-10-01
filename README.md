@@ -43,7 +43,7 @@ cd projeto-spa
 
 ## Build e deploy
 
-O site publicado usa uma versão de produção, gerada por `scripts/build.js` com esbuild. O script junta os 7 arquivos CSS e os 7 de JS em `app.min.css` e `app.min.js` (34,5 KB no total viram 22,3 KB), reescreve o caminho das imagens e grava tudo em `dist/`.
+O site publicado usa uma versão de produção, gerada por `scripts/build.js` com esbuild. O script junta os 7 arquivos CSS e os 7 de JS em `app.min.css` e `app.min.js` (35,1 KB no total viram 22,3 KB), reescreve o caminho das imagens e grava tudo em `dist/`.
 
 ```bash
 npm install
